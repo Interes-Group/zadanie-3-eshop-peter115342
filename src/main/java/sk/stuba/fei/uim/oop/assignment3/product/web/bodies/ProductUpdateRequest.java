@@ -8,5 +8,5 @@ import lombok.Setter;
 public class ProductUpdateRequest {
     private String name;
     private  String description;
-    private int price;
+    private double price;
 }

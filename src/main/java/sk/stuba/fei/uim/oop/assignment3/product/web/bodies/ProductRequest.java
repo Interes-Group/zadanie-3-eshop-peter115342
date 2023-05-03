@@ -14,5 +14,5 @@ public class ProductRequest {
 
     private int amount;
 
-    private  int price;
+    private  double price;
 }

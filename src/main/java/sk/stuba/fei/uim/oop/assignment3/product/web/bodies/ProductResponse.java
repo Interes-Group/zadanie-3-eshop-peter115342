@@ -16,7 +16,7 @@ public class ProductResponse {
 
     private int amount;
 
-    private  int price;
+    private  double price;
 
     public ProductResponse(Product product){
         this.id = product.getId();

@@ -26,7 +26,7 @@ public class Product {
 
     private int amount;
 
-    private  int price;
+    private  double price;
  public Product(ProductRequest request){
      this.name = request.getName();
      this.description = request.getDescription();
