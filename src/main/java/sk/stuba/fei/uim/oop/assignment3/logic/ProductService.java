@@ -35,7 +35,17 @@ public class ProductService implements IProductService {
 
     @Override
     public Product update(long id, ProductUpdateRequest request) throws NotFoundException {
-        return null;
+        Product product = this.getById(id);
+        if( request.getName() != null){
+            product.setName(request.getName());
+
+        }
+        if( request.getDescription() != null){
+            product.setDescription(request.getDescription());
+
+        }
+        this.repository.save(product);
+        return  product;
     }
 
     @Override
@@ -51,8 +61,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public int addAmount(long id, int increment) throws NotFoundException {
-        return 0;
+    public int addAmount(long id, int i) throws NotFoundException {
+        Product product = this.getById(id);
+        product.setAmount(product.getAmount()+i);
+        this.repository.save(product);
+        return product.getAmount();
     }
 
 
