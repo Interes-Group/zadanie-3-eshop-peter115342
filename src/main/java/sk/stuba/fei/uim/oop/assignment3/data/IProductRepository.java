@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.assignment3.product.data;
+package sk.stuba.fei.uim.oop.assignment3.data;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;

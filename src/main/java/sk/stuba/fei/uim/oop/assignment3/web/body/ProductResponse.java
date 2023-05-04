@@ -1,8 +1,8 @@
-package sk.stuba.fei.uim.oop.assignment3.product.web.bodies;
+package sk.stuba.fei.uim.oop.assignment3.web.body;
 
 import lombok.Getter;
 import lombok.Setter;
-import sk.stuba.fei.uim.oop.assignment3.product.data.Product;
+import sk.stuba.fei.uim.oop.assignment3.data.Product;
 
 @Getter
 @Setter

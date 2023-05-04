@@ -1,9 +1,9 @@
-package sk.stuba.fei.uim.oop.assignment3.product.logic;
+package sk.stuba.fei.uim.oop.assignment3.logic;
 
-import sk.stuba.fei.uim.oop.assignment3.product.data.Product;
-import sk.stuba.fei.uim.oop.assignment3.product.web.*;
+import sk.stuba.fei.uim.oop.assignment3.data.Product;
 import sk.stuba.fei.uim.oop.assignment3.exception.*;
-import sk.stuba.fei.uim.oop.assignment3.product.web.bodies.ProductRequest;
+import sk.stuba.fei.uim.oop.assignment3.web.body.ProductRequest;
+import sk.stuba.fei.uim.oop.assignment3.web.body.ProductUpdateRequest;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public interface IProductService {
     Product create(ProductRequest request) throws  NotFoundException;
 
     Product getById(long id) throws NotFoundException;
-    
-    Product update(long id, ProductRequest request) throws NotFoundException;
+
+    Product update(long id, ProductUpdateRequest request) throws NotFoundException;
 
     void delete(long id) throws NotFoundException;
 

@@ -1,9 +1,9 @@
-package sk.stuba.fei.uim.oop.assignment3.product.data;
+package sk.stuba.fei.uim.oop.assignment3.data;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sk.stuba.fei.uim.oop.assignment3.product.web.bodies.ProductRequest;
+import sk.stuba.fei.uim.oop.assignment3.web.body.ProductRequest;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
