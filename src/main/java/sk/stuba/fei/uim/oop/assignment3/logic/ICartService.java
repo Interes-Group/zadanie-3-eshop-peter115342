@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop.assignment3.logic;
 
 import sk.stuba.fei.uim.oop.assignment3.data.Cart;
 import sk.stuba.fei.uim.oop.assignment3.data.Product;
+import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductUpdateRequest;
@@ -13,12 +14,10 @@ public interface ICartService {
     List<Cart> getAll();
 
     Cart getById(Long id) throws NotFoundException;
-    Product update(long id, ProductUpdateRequest request) throws NotFoundException;
+    void delete(long id) throws NotFoundException, IllegalOperationException;
 
-    void delete(long id) throws NotFoundException;
+    Cart addToCart(Long id, ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException;
 
-    Cart addToCartList(Long id, ProductIdentifyRequest body) throws NotFoundException;
-
-    Cart removeFromCartList(long id,ProductIdentifyRequest body) throws  NotFoundException;
+    void payForCart(Long id) throws NotFoundException, IllegalOperationException;
 
 }

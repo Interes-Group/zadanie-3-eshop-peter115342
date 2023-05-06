@@ -8,6 +8,6 @@ public interface ICartRepository extends  JpaRepository<Cart,Long>{
 
     List<Cart> findAll();
 
-    Cart findCartListById(Long id);
+    Cart findCartById(Long id);
 
 }

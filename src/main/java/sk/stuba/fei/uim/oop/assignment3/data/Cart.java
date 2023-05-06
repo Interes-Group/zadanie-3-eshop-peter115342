@@ -17,9 +17,9 @@ public class Cart {
 
     private int amount;
     @OneToMany
-    private List<Product> cartList;
+    private List<Product> shoppingList;
 
     public Cart(){
-        this.cartList  = new ArrayList<>();
+        this.shoppingList = new ArrayList<>();
     }
 }

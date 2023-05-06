@@ -27,7 +27,7 @@ public class ProductService implements IProductService {
     @Override
     public Product getById(long id) throws NotFoundException {
         Product product = this.repository.findProductById(id);
-        if( product == null){
+        if(product == null){
             throw   new NotFoundException();
         }
         return product;
