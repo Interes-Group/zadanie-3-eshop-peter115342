@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sk.stuba.fei.uim.oop.assignment3.data.Cart;
 import sk.stuba.fei.uim.oop.assignment3.data.ICartRepository;
+import sk.stuba.fei.uim.oop.assignment3.data.IProductRepository;
 import sk.stuba.fei.uim.oop.assignment3.data.Product;
 import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
@@ -16,7 +17,6 @@ public class CartService implements ICartService {
     private  ICartRepository repository;
     @Autowired
     private  IProductService service;
-
     @Override
     public Cart create() {
         return this.repository.save(new Cart());
@@ -45,10 +45,14 @@ public class CartService implements ICartService {
     @Override
     public Cart addToCart(Long id,ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
         Cart cart = this.getById(id);
-        int amount = body.getAmount();
+        if (cart.isPayed()){
+            throw new IllegalOperationException();
+        }
+        System.out.println("Getting product with ID " + body.getId() + "...");
         Product product = this.service.getById(body.getId());
+        int amount = body.getAmount();
         int amountInStock = product.getAmount();
-        if( amountInStock >= amount && !cart.isPayed()){
+        if( amountInStock >= amount ){
             if (cart.getShoppingList().contains(product)){
                 product.setAmountInCart(product.getAmountInCart() + amount);
             }

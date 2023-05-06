@@ -20,5 +20,6 @@ public class Cart {
     private  double sum;
     public Cart(){
         this.shoppingList = new ArrayList<>();
+        payed = false;
     }
 }

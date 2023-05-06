@@ -25,7 +25,7 @@ public class CartController {
     private ICartService service;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CartResponse> addList() {
+    public ResponseEntity<CartResponse> addCart() {
         return new ResponseEntity<>(new CartResponse(this.service.create()), HttpStatus.CREATED);
     }
 
@@ -44,12 +44,12 @@ public class CartController {
         this.service.delete(id);
     }
 
-    @PostMapping(value = "/{id}/{amount}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/{id}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public CartResponse addToCart(@PathVariable("id") Long id, @RequestBody ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
         return new CartResponse(this.service.addToCart(id, body));
     }
 
-    @GetMapping(value = "/{id}/lend", produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "/{id}/pay", produces = MediaType.TEXT_PLAIN_VALUE)
     public CartPriceResponse payCart(@PathVariable("id") Long id) throws NotFoundException, IllegalOperationException {
         return  new CartPriceResponse(this.service.payForCart(id));
     }

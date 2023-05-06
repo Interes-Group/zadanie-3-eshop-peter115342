@@ -38,11 +38,9 @@ public class ProductService implements IProductService {
         Product product = this.getById(id);
         if( request.getName() != null){
             product.setName(request.getName());
-
         }
         if( request.getDescription() != null){
             product.setDescription(request.getDescription());
-
         }
         this.repository.save(product);
         return  product;
