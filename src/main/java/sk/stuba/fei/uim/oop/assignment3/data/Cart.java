@@ -14,11 +14,10 @@ public class Cart {
     private Long id;
 
     private  boolean payed;
-
-    private int amount;
     @OneToMany
     private List<Product> shoppingList;
 
+    private  double sum;
     public Cart(){
         this.shoppingList = new ArrayList<>();
     }

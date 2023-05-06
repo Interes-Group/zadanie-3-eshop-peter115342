@@ -26,6 +26,8 @@ public class Product {
 
     private int amount;
 
+    private int amountInCart;
+
     private  double price;
  public Product(ProductRequest request){
      this.name = request.getName();
@@ -33,6 +35,7 @@ public class Product {
      this.amount = request.getAmount();
      this.unit = request.getUnit();
      this.price = request.getPrice();
+     this.amountInCart = 0;
 
  }
 

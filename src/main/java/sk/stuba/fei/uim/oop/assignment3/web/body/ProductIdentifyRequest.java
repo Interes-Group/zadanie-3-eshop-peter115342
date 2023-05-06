@@ -5,4 +5,6 @@ import lombok.Getter;
 @Getter
 public class ProductIdentifyRequest {
     private long id;
+
+    private  int amount;
 }

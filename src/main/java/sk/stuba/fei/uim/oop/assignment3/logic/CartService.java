@@ -8,7 +8,6 @@ import sk.stuba.fei.uim.oop.assignment3.data.Product;
 import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
-import sk.stuba.fei.uim.oop.assignment3.web.body.ProductUpdateRequest;
 
 import java.util.List;
 @Service
@@ -44,27 +43,42 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public Cart addToCart(Long id, ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
+    public Cart addToCart(Long id,ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
         Cart cart = this.getById(id);
+        int amount = body.getAmount();
         Product product = this.service.getById(body.getId());
-        if(cart.getShoppingList().contains(product)){
-            cart.getShoppingList().add(product);
+        int amountInStock = product.getAmount();
+        if( amountInStock >= amount && !cart.isPayed()){
+            if (cart.getShoppingList().contains(product)){
+                product.setAmountInCart(product.getAmountInCart() + amount);
+            }
+            else{
+                cart.getShoppingList().add(product);
+                product.setAmountInCart(amount);
+            }
+            product.setAmount(product.getAmount()-amount);
+
         }
         else {
-            throw  new NotFoundException();
+            throw new IllegalOperationException();
         }
         this.repository.save(cart);
         return cart;
     }
 
     @Override
-    public void payForCart(Long id) throws NotFoundException, IllegalOperationException {
+    public Cart payForCart(Long id) throws NotFoundException, IllegalOperationException {
+        double sum = 0;
         Cart cart =  this.getById(id);
         if(cart.isPayed()){
             throw  new IllegalOperationException();
         }
+        for (Product product : cart.getShoppingList()){
+            sum  =  sum + product.getPrice();
+        }
         cart.setPayed(true);
         this.repository.save(cart);
+        return cart;
     }
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sk.stuba.fei.uim.oop.assignment3.web.body.CartPriceResponse;
 import sk.stuba.fei.uim.oop.assignment3.web.body.CartResponse;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
@@ -29,28 +30,28 @@ public class CartController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CartResponse> getAllLists() {
+    public List<CartResponse> getAllCarts() {
         return this.service.getAll().stream().map(CartResponse::new).collect(Collectors.toList());
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CartResponse getList(@PathVariable("id") long listId) throws NotFoundException {
-        return new CartResponse(this.service.getById(listId));
+    public CartResponse getCart(@PathVariable("id") long id) throws NotFoundException {
+        return new CartResponse(this.service.getById(id));
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") long listId) throws NotFoundException, IllegalOperationException {
-        this.service.delete(listId);
+    public void delete(@PathVariable("id") long id) throws NotFoundException, IllegalOperationException {
+        this.service.delete(id);
     }
 
-    @PostMapping(value = "/{id}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public CartResponse addToList(@PathVariable("id") Long listId, @RequestBody ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
-        return new CartResponse(this.service.addToCart(listId, body));
+    @PostMapping(value = "/{id}/{amount}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public CartResponse addToCart(@PathVariable("id") Long id, @RequestBody ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException {
+        return new CartResponse(this.service.addToCart(id, body));
     }
 
     @GetMapping(value = "/{id}/lend", produces = MediaType.TEXT_PLAIN_VALUE)
-    public void lendList(@PathVariable("id") Long id) throws NotFoundException, IllegalOperationException {
-        this.service.payForCart(id);
+    public CartPriceResponse payCart(@PathVariable("id") Long id) throws NotFoundException, IllegalOperationException {
+        return  new CartPriceResponse(this.service.payForCart(id));
     }
 
 

@@ -18,6 +18,6 @@ public interface ICartService {
 
     Cart addToCart(Long id, ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException;
 
-    void payForCart(Long id) throws NotFoundException, IllegalOperationException;
+    Cart payForCart(Long id) throws NotFoundException, IllegalOperationException;
 
 }
