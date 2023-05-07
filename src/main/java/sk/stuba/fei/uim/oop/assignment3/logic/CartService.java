@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sk.stuba.fei.uim.oop.assignment3.data.Cart;
 import sk.stuba.fei.uim.oop.assignment3.data.ICartRepository;
-import sk.stuba.fei.uim.oop.assignment3.data.IProductRepository;
 import sk.stuba.fei.uim.oop.assignment3.data.Product;
 import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
@@ -48,8 +47,7 @@ public class CartService implements ICartService {
         if (cart.isPayed()){
             throw new IllegalOperationException();
         }
-        System.out.println("Getting product with ID " + body.getId() + "...");
-        Product product = this.service.getById(body.getId());
+        Product product = this.service.getById(body.getProductId());
         int amount = body.getAmount();
         int amountInStock = product.getAmount();
         if( amountInStock >= amount ){
@@ -71,18 +69,18 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public Cart payForCart(Long id) throws NotFoundException, IllegalOperationException {
+    public String payForCart(Long id) throws NotFoundException, IllegalOperationException {
         double sum = 0;
         Cart cart =  this.getById(id);
         if(cart.isPayed()){
             throw  new IllegalOperationException();
         }
         for (Product product : cart.getShoppingList()){
-            sum  =  sum + product.getPrice();
+            sum = sum+ product.getPrice()*product.getAmountInCart();
         }
         cart.setPayed(true);
         this.repository.save(cart);
-        return cart;
+        return ""+sum;
     }
 
 }

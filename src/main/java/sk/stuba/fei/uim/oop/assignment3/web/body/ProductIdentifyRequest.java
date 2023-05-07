@@ -8,7 +8,8 @@ import lombok.Setter;
 @Setter
 public class ProductIdentifyRequest {
 
-    private long id;
+    private long productId;
 
     private  int amount;
+
 }
