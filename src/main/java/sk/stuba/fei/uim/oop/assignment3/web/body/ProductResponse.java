@@ -8,15 +8,15 @@ import sk.stuba.fei.uim.oop.assignment3.data.Product;
 @Setter
 public class ProductResponse {
     private final long id;
-    private String name;
+    private final String name;
 
-    private String unit;
+    private final String unit;
 
-    private String description;
+    private final String description;
 
-    private int amount;
+    private final int amount;
 
-    private double price;
+    private final double price;
 
     public ProductResponse(Product product) {
         this.id = product.getId();

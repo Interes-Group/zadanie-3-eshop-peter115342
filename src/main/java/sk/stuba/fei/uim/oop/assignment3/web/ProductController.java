@@ -19,8 +19,9 @@ import java.util.stream.Collectors;
 @RequestMapping("/product")
 public class ProductController {
     private final IProductService service;
+
     @Autowired
-    public ProductController(IProductService service){
+    public ProductController(IProductService service) {
         this.service = service;
     }
 
