@@ -20,6 +20,6 @@ public interface IProductService {
 
     int getAmount(long id) throws NotFoundException;
 
-    int addAmount(long id, int increment) throws NotFoundException;
+    int addAmount(long id, int i) throws NotFoundException;
 
 }
