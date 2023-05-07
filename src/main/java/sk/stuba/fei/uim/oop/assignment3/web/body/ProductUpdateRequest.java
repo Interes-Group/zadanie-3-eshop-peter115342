@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 public class ProductUpdateRequest {
     private String name;
-    private  String description;
+    private String description;
     private double price;
 }

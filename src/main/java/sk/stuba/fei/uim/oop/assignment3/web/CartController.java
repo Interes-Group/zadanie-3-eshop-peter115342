@@ -1,16 +1,13 @@
 package sk.stuba.fei.uim.oop.assignment3.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
-import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
-import sk.stuba.fei.uim.oop.assignment3.logic.ICartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sk.stuba.fei.uim.oop.assignment3.web.body.CartPriceResponse;
+import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
+import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
+import sk.stuba.fei.uim.oop.assignment3.logic.ICartService;
 import sk.stuba.fei.uim.oop.assignment3.web.body.CartResponse;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
@@ -20,9 +17,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-
+    private final ICartService service;
     @Autowired
-    private ICartService service;
+    public CartController(ICartService service) {
+        this.service = service;
+    }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CartResponse> addCart() {
@@ -51,7 +50,7 @@ public class CartController {
 
     @GetMapping(value = "/{id}/pay", produces = MediaType.TEXT_PLAIN_VALUE)
     public String payCart(@PathVariable("id") Long id) throws NotFoundException, IllegalOperationException {
-         return this.service.payForCart(id);
+        return this.service.payForCart(id);
 
     }
 

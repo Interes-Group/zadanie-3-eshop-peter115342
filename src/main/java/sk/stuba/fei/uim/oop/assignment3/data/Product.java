@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 @Getter
 @Setter
@@ -28,15 +29,16 @@ public class Product {
 
     private int amountInCart;
 
-    private  double price;
- public Product(ProductRequest request){
-     this.name = request.getName();
-     this.description = request.getDescription();
-     this.amount = request.getAmount();
-     this.unit = request.getUnit();
-     this.price = request.getPrice();
-     this.amountInCart = 0;
+    private double price;
 
- }
+    public Product(ProductRequest request) {
+        this.name = request.getName();
+        this.description = request.getDescription();
+        this.amount = request.getAmount();
+        this.unit = request.getUnit();
+        this.price = request.getPrice();
+        this.amountInCart = 0;
+
+    }
 
 }

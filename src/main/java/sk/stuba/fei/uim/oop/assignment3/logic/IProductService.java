@@ -1,7 +1,7 @@
 package sk.stuba.fei.uim.oop.assignment3.logic;
 
 import sk.stuba.fei.uim.oop.assignment3.data.Product;
-import sk.stuba.fei.uim.oop.assignment3.exception.*;
+import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductRequest;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductUpdateRequest;
 
@@ -10,7 +10,7 @@ import java.util.List;
 public interface IProductService {
     List<Product> getAll();
 
-    Product create(ProductRequest request) throws  NotFoundException;
+    Product create(ProductRequest request) throws NotFoundException;
 
     Product getById(long id) throws NotFoundException;
 
@@ -22,4 +22,4 @@ public interface IProductService {
 
     int addAmount(long id, int increment) throws NotFoundException;
 
- }
+}

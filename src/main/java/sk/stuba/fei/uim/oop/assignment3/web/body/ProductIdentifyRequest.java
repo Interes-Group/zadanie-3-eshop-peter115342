@@ -10,6 +10,6 @@ public class ProductIdentifyRequest {
 
     private long productId;
 
-    private  int amount;
+    private int amount;
 
 }

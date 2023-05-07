@@ -14,7 +14,7 @@ public class CartResponse {
     private List<ProductInCartResponse> shoppingList;
     private boolean payed;
 
-    public CartResponse(Cart cart){
+    public CartResponse(Cart cart) {
         this.id = cart.getId();
         this.payed = cart.isPayed();
         this.shoppingList = cart.getShoppingList().stream().map(ProductInCartResponse::new).collect(Collectors.toList());
