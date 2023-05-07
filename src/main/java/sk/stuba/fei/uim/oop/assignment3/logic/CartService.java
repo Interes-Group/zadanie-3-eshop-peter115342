@@ -80,7 +80,7 @@ public class CartService implements ICartService {
         }
         cart.setPayed(true);
         this.repository.save(cart);
-        return "" + sum;
+        return String.valueOf(sum);
     }
 
 }

@@ -18,8 +18,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+    private final IProductService service;
     @Autowired
-    private IProductService service;
+    public ProductController(IProductService service){
+        this.service = service;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ProductResponse> getAllProducts() {
