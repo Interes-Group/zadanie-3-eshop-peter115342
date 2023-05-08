@@ -5,12 +5,8 @@ import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
-import java.util.List;
-
 public interface ICartService {
     Cart create();
-
-    List<Cart> getAll();
 
     Cart getById(Long id) throws NotFoundException;
 

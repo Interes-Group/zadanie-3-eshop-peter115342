@@ -11,9 +11,6 @@ import sk.stuba.fei.uim.oop.assignment3.logic.ICartService;
 import sk.stuba.fei.uim.oop.assignment3.web.body.CartResponse;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -29,10 +26,6 @@ public class CartController {
         return new ResponseEntity<>(new CartResponse(this.service.create()), HttpStatus.CREATED);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CartResponse> getAllCarts() {
-        return this.service.getAll().stream().map(CartResponse::new).collect(Collectors.toList());
-    }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public CartResponse getCart(@PathVariable("id") long id) throws NotFoundException {

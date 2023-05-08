@@ -9,8 +9,6 @@ import sk.stuba.fei.uim.oop.assignment3.exception.IllegalOperationException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
 import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
-import java.util.List;
-
 @Service
 public class CartService implements ICartService {
     @Autowired
@@ -21,11 +19,6 @@ public class CartService implements ICartService {
     @Override
     public Cart create() {
         return this.repository.save(new Cart());
-    }
-
-    @Override
-    public List<Cart> getAll() {
-        return this.repository.findAll();
     }
 
     @Override
