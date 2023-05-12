@@ -11,10 +11,14 @@ import sk.stuba.fei.uim.oop.assignment3.web.body.ProductIdentifyRequest;
 
 @Service
 public class CartService implements ICartService {
+    private final ICartRepository repository;
+    private final IProductService service;
+
     @Autowired
-    private ICartRepository repository;
-    @Autowired
-    private IProductService service;
+    public CartService(ICartRepository repository, IProductService service) {
+        this.repository = repository;
+        this.service = service;
+    }
 
     @Override
     public Cart create() {
