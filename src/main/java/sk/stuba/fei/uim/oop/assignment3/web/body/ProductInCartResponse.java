@@ -7,7 +7,7 @@ import sk.stuba.fei.uim.oop.assignment3.data.Product;
 @Getter
 @Setter
 public class ProductInCartResponse {
-    private long productId;
+    private Long productId;
     private int amount;
 
     public ProductInCartResponse(Product product) {

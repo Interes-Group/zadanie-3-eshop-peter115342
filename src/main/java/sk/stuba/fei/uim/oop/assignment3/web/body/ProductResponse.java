@@ -7,7 +7,7 @@ import sk.stuba.fei.uim.oop.assignment3.data.Product;
 @Getter
 @Setter
 public class ProductResponse {
-    private final long id;
+    private final Long id;
     private final String name;
 
     private final String unit;

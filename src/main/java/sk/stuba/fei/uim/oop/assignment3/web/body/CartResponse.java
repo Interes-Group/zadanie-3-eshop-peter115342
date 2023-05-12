@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class CartResponse {
-    private final long id;
+    private final Long id;
     private final List<ProductInCartResponse> shoppingList;
     private final boolean payed;
 

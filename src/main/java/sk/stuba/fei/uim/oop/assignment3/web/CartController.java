@@ -29,12 +29,12 @@ public class CartController {
 
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CartResponse getCart(@PathVariable("id") long id) throws NotFoundException {
+    public CartResponse getCart(@PathVariable("id") Long id) throws NotFoundException {
         return new CartResponse(this.service.getById(id));
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") long id) throws NotFoundException, IllegalOperationException {
+    public void delete(@PathVariable("id") Long id) throws NotFoundException, IllegalOperationException {
         this.service.delete(id);
     }
 

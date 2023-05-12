@@ -30,7 +30,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product getById(long id) throws NotFoundException {
+    public Product getById(Long id) throws NotFoundException {
         Product product = this.repository.findProductById(id);
         if (product == null) {
             throw new NotFoundException();
@@ -39,7 +39,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product update(long id, ProductUpdateRequest request) throws NotFoundException {
+    public Product update(Long id, ProductUpdateRequest request) throws NotFoundException {
         Product product = this.getById(id);
         if (request.getName() != null) {
             product.setName(request.getName());
@@ -52,19 +52,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(Long id) throws NotFoundException {
         Product product = this.getById(id);
         this.repository.delete(product);
     }
 
     @Override
-    public int getAmount(long id) throws NotFoundException {
+    public int getAmount(Long id) throws NotFoundException {
         Product product = this.getById(id);
         return product.getAmount();
     }
 
     @Override
-    public int addAmount(long id, int i) throws NotFoundException {
+    public int addAmount(Long id, int i) throws NotFoundException {
         Product product = this.getById(id);
         product.setAmount(product.getAmount() + i);
         this.repository.save(product);

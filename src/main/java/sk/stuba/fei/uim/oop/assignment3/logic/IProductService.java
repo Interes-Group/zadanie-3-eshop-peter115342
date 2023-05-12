@@ -12,14 +12,14 @@ public interface IProductService {
 
     Product create(ProductRequest request) throws NotFoundException;
 
-    Product getById(long id) throws NotFoundException;
+    Product getById(Long id) throws NotFoundException;
 
-    Product update(long id, ProductUpdateRequest request) throws NotFoundException;
+    Product update(Long id, ProductUpdateRequest request) throws NotFoundException;
 
-    void delete(long id) throws NotFoundException;
+    void delete(Long id) throws NotFoundException;
 
-    int getAmount(long id) throws NotFoundException;
+    int getAmount(Long id) throws NotFoundException;
 
-    int addAmount(long id, int i) throws NotFoundException;
+    int addAmount(Long id, int i) throws NotFoundException;
 
 }
