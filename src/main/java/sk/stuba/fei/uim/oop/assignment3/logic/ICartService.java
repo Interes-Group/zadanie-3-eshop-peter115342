@@ -10,7 +10,7 @@ public interface ICartService {
 
     Cart getById(Long id) throws NotFoundException;
 
-    void delete(long id) throws NotFoundException, IllegalOperationException;
+    void delete(Long id) throws NotFoundException, IllegalOperationException;
 
     Cart addToCart(Long id, ProductIdentifyRequest body) throws NotFoundException, IllegalOperationException;
 

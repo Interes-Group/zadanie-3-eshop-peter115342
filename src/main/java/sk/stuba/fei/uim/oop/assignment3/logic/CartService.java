@@ -35,7 +35,7 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(Long id) throws NotFoundException {
         Cart cart = this.getById(id);
         this.repository.delete(cart);
     }
